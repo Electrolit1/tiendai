@@ -1,232 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tienda | Ivonia Network</title>
-  <link rel="icon" type="image/png" href="ivonia.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Ivonia Network</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    :root{
-      --bg-1: #0b0b0b;
-      --bg-2: #111111;
-      --card: #0f0f10;
-      --accent: #FFB400;
-      --muted: #bfbfbf;
-      --glass: rgba(255,255,255,0.03);
-    }
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <link rel="shortcut icon" href="img/logo.png" type="image/png">
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:"Poppins",sans-serif;
-      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
-      color: #f4f4f4;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      min-height:100vh;
-    }
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
 
-    header{
-      width:100%;
-      padding:18px 26px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-bottom: 1px solid rgba(255,180,0,0.06);
-      position:sticky;
-      top:0;
-      z-index:100;
-    }
+        .note {
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9rem;
+        }
 
-    .brand{
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
+        .btn-volver {
+            margin-top: 40px;
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #ff8800; /* Naranja bonito */
+            color: #0d0d0d;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            box-shadow: 0 0 10px #ff880060;
+        }
 
-    .logo{
-      width:56px;
-      height:56px;
-      border-radius:12px;
-      overflow:hidden;
-      flex:0 0 56px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background: #0d0d0d;
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-    .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-    .brand h1{
-      margin:0;
-      font-size:1.05rem;
-      font-weight:800;
-      color:var(--accent);
-      letter-spacing:0.2px;
-    }
-    .brand p{ margin:0; font-size:0.78rem; color:var(--muted); }
-
-    main{ max-width:1180px; margin:28px auto; padding: 0 20px; }
-
-    .hero{
-      text-align:center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-      padding:38px 20px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.02);
-      margin-bottom:28px;
-    }
-
-    .hero h2{
-      font-size:2rem;
-      color:#fff;
-      font-weight:800;
-      margin:0 0 10px;
-    }
-
-    .hero p{
-      color:var(--muted);
-      font-size:1rem;
-      margin:0 auto;
-      max-width:720px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:22px;
-    }
-
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
-      border-radius:14px;
-      padding:22px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      border:1px solid rgba(255,255,255,0.02);
-      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
-      text-decoration:none;
-      color:inherit;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-    }
-
-    .card:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.6);
-    }
-
-    .card h3{
-      font-size:1.7rem;
-      margin:0 0 10px;
-      font-weight:800;
-    }
-
-    .card p{
-      color:var(--muted);
-      font-weight:600;
-      margin-bottom:20px;
-    }
-
-    .btn-comprar{
-      background:var(--accent);
-      color:#0a0a0a;
-      font-weight:700;
-      padding:10px 18px;
-      border-radius:10px;
-      text-align:center;
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-
-    .btn-comprar:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 28px rgba(255,180,0,0.18);
-    }
-
-    .note{
-      margin-top:28px;
-      font-size:0.9rem;
-      color:var(--muted);
-      text-align:center;
-    }
-
-    /* Colores personalizados para cada rango */
-    .card--fox{ border-left:6px solid #ff8800; }
-    .card--creeper{ border-left:6px solid #00ff80; }
-    .card--allay{ border-left:6px solid #66ccff; }
-    .card--witch{ border-left:6px solid #b24cff; }
-
-    @media(max-width:980px){
-      .grid{ grid-template-columns:1fr; }
-      .hero h2{ font-size:1.7rem; }
-    }
-  </style>
+        .btn-volver:hover {
+            background-color: #ff7700;
+            box-shadow: 0 0 16px #ff7700aa;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="brand">
-      <div class="logo">
-        <img src="ivonia.png" alt="Ivonia logo">
-      </div>
-      <div>
-        <h1>Ivonia Network</h1>
-        <p>Tienda oficial de rangos</p>
-      </div>
-    </div>
-  </header>
+<main>
+    <h2 class="text-4xl font-bold">🛒 Tienda Ivonia Network</h2>
 
-  <main>
-    <section class="hero">
-      <h2>Tienda Ivonia Network</h2>
-      <p>Apoya el servidor adquiriendo tu rango exclusivo. Obtén beneficios únicos, cosméticos y más. Todos los pagos se gestionan mediante nuestro Discord oficial.</p>
-    </section>
+    <p class="text-xl font-semibold mt-4" style="color:#ffb400;">
+        La tienda estará disponible muy pronto.<br>
+        ¡Gracias por tu paciencia!
+    </p>
 
-    <section class="grid">
-      <div class="card card--fox">
-        <div>
-          <h3>🦊 Rango Fox</h3>
-          <p>Perfecto para quienes comienzan. Incluye kits básicos, /feed y acceso a comandos premium iniciales.</p>
-          <p>▸ Precio: 2 USD</p>
-        </div>
-        <a href="https://discord.ivonia.us" target="_blank" class="btn-comprar">Comprar en Discord</a>
-      </div>
+    <a href="https://www.ivonia.us" class="btn-volver">
+         Volver a la web
 
-      <div class="card card--creeper">
-        <div>
-          <h3>💣 Rango Creeper</h3>
-          <p>Desbloquea comandos extra, más homes, kits avanzados y efectos visuales exclusivos.</p>
-          <p>▸ Precio: 3 USD</p>
-        </div>
-        <a href="https://discord.ivonia.us" target="_blank" class="btn-comprar">Comprar en Discord</a>
-      </div>
+</main>
 
-      <div class="card card--allay">
-        <div>
-          <h3>💎 Rango Allay</h3>
-          <p>Disfruta de ventajas premium, como /fly en zonas seguras, kits legendarios y soporte prioritario.</p>
-          <p>▸ Precio: 3.5 USD</p>
-        </div>
-        <a href="https://discord.ivonia.us" target="_blank" class="btn-comprar">Comprar en Discord</a>
-      </div>
-
-      <div class="card card--witch">
-        <div>
-          <h3>🔮 Rango Witch</h3>
-          <p>El rango más poderoso. Obtén todos los beneficios anteriores y recompensas únicas cada semana.</p>
-          <p>▸ Precio: 5 USD</p>
-        </div>
-        <a href="https://discord.ivonia.us" target="_blank" class="btn-comprar">Comprar en Discord</a>
-      </div>
-    </section>
-
-    <div class="note">Ivonia Network no está afiliada con Mojang Studios o Microsoft Corporation</div>
-  </main>
 </body>
 </html>
